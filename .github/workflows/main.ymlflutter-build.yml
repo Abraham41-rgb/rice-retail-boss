@@ -1,0 +1,38 @@
+name: Flutter Build APK
+
+on:
+  workflow_dispatch: # run manually from Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Release APK
+        run: flutter build apk --release
+
+      - name: Upload Release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: RiceRetailBoss-Release
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Build Debug APK
+        run: flutter build apk --debug
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: RiceRetailBoss-Debug
+          path: build/app/outputs/flutter-apk/app-debug.apk
