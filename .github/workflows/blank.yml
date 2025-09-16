@@ -1,0 +1,13 @@
+
+github/workflows/main.ymlname: Flutter Build APK  on:   workflow_dispatch: # lets you trigger manually  jobs:   build:     runs-on: ubuntu-latest      steps:       - name: Checkout code         uses: actions/checkout@v4        - name: Set up Flutter         uses: subosito/flutter-action@v2         with:           flutter-version: '3.24.0' # stable version        - name: Install dependencies         run: flutter pub get        - name: Build APK         run: flutter build apk --release        - name: Upload APK         uses: actions': File name too long
+warning: Clone succeeded, but checkout failed.
+You can inspect what was checked out with 'git status'
+and retry with 'git restore --source=HEAD :/'
+
+
+
+Build failed :|
+Failed to clone repository
+
+Installing SDKs
+< 1s
